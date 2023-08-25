@@ -14,16 +14,49 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("Cronómetro"),
-        ),
-        body: const Column(
-            //
-            //    Aquí irán las clases de los widgets
-            //
+          appBar: AppBar(
+            centerTitle: true,
+            title: const Text("Cronómetro"),
+          ),
+          body: const Cronometer()),
+    );
+  }
+}
+
+class Cronometer extends StatefulWidget {
+  const Cronometer({super.key});
+
+  @override
+  State<Cronometer> createState() => _CronometerState();
+}
+
+class _CronometerState extends State<Cronometer> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Center(
+          child: ClipOval(
+            child: Container(
+              color: Theme.of(context).primaryColor,
+              height: 300,
+              width: 300,
+              child: const Center(
+                  child: Text(
+                "0s",
+                style: TextStyle(color: Colors.white, fontSize: 80),
+              )),
             ),
-      ),
+          ),
+        ),
+        const Row(
+          children: [
+            //
+            // Acá van los botones
+            //
+          ],
+        )
+      ],
     );
   }
 }
