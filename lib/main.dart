@@ -54,14 +54,14 @@ class _CronometerState extends State<Cronometer> {
           children: [
             ElevatedButton(
               onPressed: () {
-                // Lógica para el primer botón
+                // Lógica botón
               },
               child: Text("INICIAR"),
             ),
             SizedBox(width: 20),
             ElevatedButton(
               onPressed: () {
-                // Lógica para el segundo botón
+                // Lógica botón
               },
               child: Text("DETENER"),
             ),
