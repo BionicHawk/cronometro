@@ -3,6 +3,19 @@ import 'package:flutter/material.dart';
 // Entrada de la aplicación
 void main() => runApp(const MyApp());
 
+// Variable global de los segundos que se desplegarán en el cronómetro
+int seconds = 0;
+// Variable para detener el flujo del cronómetro
+bool start = false;
+// Listener del flujo
+Stream<int> _crono = timer();
+
+Stream<int> timer() {
+  return Stream.periodic(const Duration(seconds: 1), (value) {
+    return value;
+  });
+}
+
 // Pantalla principal del programa5
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -41,32 +54,39 @@ class _CronometerState extends State<Cronometer> {
               color: Theme.of(context).primaryColor,
               height: 300,
               width: 300,
-              child: const Center(
+              child: Center(
                   child: Text(
-                "0s",
-                style: TextStyle(color: Colors.white, fontSize: 80),
+                "${seconds}s",
+                style: const TextStyle(color: Colors.white, fontSize: 80),
               )),
             ),
           ),
         ),
-         Row(
+        const Spacer(flex: 1),
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () {
                 // Lógica botón
+                start = true;
               },
-              child: Text("INICIAR"),
+              child: const Text("INICIAR"),
             ),
-            SizedBox(width: 20),
+            const SizedBox(width: 20),
             ElevatedButton(
               onPressed: () {
                 // Lógica botón
+                start = false;
+                seconds = 0;
+                setState(() {});
               },
-              child: Text("DETENER"),
+              child: const Text("DETENER"),
             ),
           ], //children
-        )
+        ),
+        const Padding(
+            padding: EdgeInsets.symmetric(vertical: 40, horizontal: 0))
       ],
     );
   }
