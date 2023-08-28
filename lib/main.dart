@@ -7,14 +7,6 @@ void main() => runApp(const MyApp());
 int seconds = 0;
 // Variable para detener el flujo del cronómetro
 bool start = false;
-// Listener del flujo
-Stream<int> _crono = timer();
-
-Stream<int> timer() {
-  return Stream.periodic(const Duration(seconds: 1), (value) {
-    return value;
-  });
-}
 
 // Pantalla principal del programa5
 class MyApp extends StatelessWidget {
@@ -44,7 +36,6 @@ class Cronometer extends StatefulWidget {
 }
 
 class _CronometerState extends State<Cronometer> {
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -72,9 +63,9 @@ class _CronometerState extends State<Cronometer> {
                 // Lógica botón
                 start = true;
 
-                while(start){
+                while (start) {
                   await Future.delayed(const Duration(seconds: 1));
-                  if(!start) return;
+                  if (!start) return;
                   setState(() {
                     seconds = seconds + 1;
                   });
