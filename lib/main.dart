@@ -44,6 +44,7 @@ class Cronometer extends StatefulWidget {
 }
 
 class _CronometerState extends State<Cronometer> {
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -67,9 +68,17 @@ class _CronometerState extends State<Cronometer> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 // Lógica botón
                 start = true;
+
+                while(start){
+                  await Future.delayed(const Duration(seconds: 1));
+                  if(!start) return;
+                  setState(() {
+                    seconds = seconds + 1;
+                  });
+                }
               },
               child: const Text("INICIAR"),
             ),
@@ -78,8 +87,10 @@ class _CronometerState extends State<Cronometer> {
               onPressed: () {
                 // Lógica botón
                 start = false;
-                seconds = 0;
-                setState(() {});
+
+                setState(() {
+                  seconds = 0;
+                });
               },
               child: const Text("DETENER"),
             ),
