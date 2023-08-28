@@ -49,12 +49,23 @@ class _CronometerState extends State<Cronometer> {
             ),
           ),
         ),
-        const Row(
+         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //
-            // Acá van los botones
-            //
-          ],
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para el primer botón
+              },
+              child: Text("INICIAR"),
+            ),
+            SizedBox(width: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para el segundo botón
+              },
+              child: Text("DETENER"),
+            ),
+          ], //children
         )
       ],
     );
