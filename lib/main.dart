@@ -61,14 +61,15 @@ class _CronometerState extends State<Cronometer> {
             ElevatedButton(
               onPressed: () async {
                 // Lógica botón
-                start = true;
-
-                while (start) {
-                  await Future.delayed(const Duration(seconds: 1));
-                  if (!start) return;
-                  setState(() {
-                    seconds = seconds + 1;
-                  });
+                if (!start) {
+                  start = true;
+                  while (start) {
+                    await Future.delayed(const Duration(seconds: 1));
+                    if (!start) return;
+                    setState(() {
+                      seconds = seconds + 1;
+                    });
+                  }
                 }
               },
               child: const Text("INICIAR"),
